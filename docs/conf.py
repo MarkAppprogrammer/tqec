@@ -70,6 +70,33 @@ extensions = [
     "sphinx_design",
 ]
 
+# sphinx-gallery: convert example scripts to a browsable gallery of examples
+# https://sphinx-gallery.github.io/stable/configuration.html
+# Note: sphinx-gallery should be installed in the docs build environment.
+extensions.append("sphinx_gallery.gen_gallery")
+
+try:
+    # ordering helper for examples
+    from sphinx_gallery.sorting import FileNameSortKey
+except Exception:  # pragma: no cover - best-effort import
+    FileNameSortKey = None
+
+# Configuration for sphinx-gallery
+sphinx_gallery_conf = {
+    # path to your example scripts relative to the documentation source
+    "examples_dirs": "gallery/examples",
+    # path where to save gallery generated output
+    "gallery_dirs": "auto_examples",
+    # only consider .py files as examples
+    "filename_pattern": r"\\.py$",
+    # keep the examples in filename order
+    "within_subsection_order": FileNameSortKey("_"),
+    # don't try to treat existing notebooks under docs/gallery as examples
+    "ignore_pattern": r"\\.ipynb$",
+    # allow users to download the generated notebooks if desired
+    "download_all_examples": False,
+}
+
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 

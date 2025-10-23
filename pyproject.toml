@@ -74,6 +74,7 @@ docs = [
   "myst-parser<=4.0.1",
   "pydata-sphinx-theme<=0.16.1",
   "nbsphinx<=0.9.7",
+  "sphinx-gallery<=1.0.0",
   "pandoc<=2.4",
   "sphinxcontrib-mermaid<=1.0.0",
   "docformatter<=1.7.7",
